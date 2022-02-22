@@ -14,12 +14,7 @@
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "outDir": "../dist",
-    "baseUrl": ".",
-    "paths": {
-      "@shared/*": [
-        "../shared/*"
-      ],
-    }
+    "baseUrl": "."
   },
   "include": ["./**/*.ts"],
   "exclude": ["../node_modules"]

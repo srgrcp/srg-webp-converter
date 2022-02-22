@@ -1,7 +1,7 @@
-import { InputFile } from "@shared/input-file";
+import { InputFile } from "../../shared/input-file";
+import { formatBytes } from "../../shared/format-bytes";
 import { dialog, ipcMain, IpcMainInvokeEvent } from "electron";
 import { lstat } from "fs/promises";
-import { formatBytes } from "../lib/format-bytes";
 
 ipcMain.handle('open-file-dialog', async (event: IpcMainInvokeEvent, message: any): Promise<InputFile[]> => {
   try {

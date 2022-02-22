@@ -1,3 +1,4 @@
+import { InputFile } from "@shared/input-file";
 import { useRecoilCallback } from "recoil";
 import { webpConverter } from "../lib/webp-converter";
 import { converterState } from "./state";
@@ -13,6 +14,18 @@ export const useOpenFileDialog = () => {
     return inputFiles.length;
   }, []);
 };
+
+export const useSetInputFiles = () => {
+  return useRecoilCallback(({ set, snapshot }) => async (inputFiles: InputFile[]) => {
+    const release = snapshot.retain();
+    const _converterState = await snapshot.getPromise(converterState);
+
+    set(converterState, ({ ..._converterState, inputFiles }));
+    release();
+    return inputFiles.length;
+  }, []);
+};
+
 
 export const useConvertFiles = () => {
   return useRecoilCallback(({ set, snapshot }) => async () => {

@@ -27,16 +27,17 @@ async function createWindow() {
     icon: pathToFileURL(join(__dirname, '../renderer', 'favicon.ico')).toString(),
     title: 'SRG Webp Converter',
   })
-  mainWindow.setMenu(null);
-
+  
   const url = isDev
-    ? 'http://localhost:8000/'
-    : pathToFileURL(join(__dirname, '../renderer/index.html')).href
-
+  ? 'http://localhost:8000/'
+  : pathToFileURL(join(__dirname, '../renderer/index.html')).href
+  
   mainWindow.loadURL(url)
-
+  
   if (isDev) {
     mainWindow.webContents.openDevTools()
+  } else {
+    mainWindow.setMenu(null);
   }
 }
 

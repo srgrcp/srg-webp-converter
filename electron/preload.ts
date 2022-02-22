@@ -1,4 +1,4 @@
-import { InputFile } from "@shared/input-file";
+import { InputFile } from "../shared/input-file";
 import { contextBridge, ipcRenderer } from "electron";
 
 contextBridge.exposeInMainWorld('webpConverter', {

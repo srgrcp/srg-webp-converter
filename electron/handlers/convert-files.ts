@@ -1,4 +1,4 @@
-import { InputFile } from "@shared/input-file";
+import { InputFile } from "../../shared/input-file";
 import { exec } from "child_process";
 import { ipcMain } from "electron";
 import { cwebp } from "../lib/cwebp";
