@@ -4,7 +4,7 @@ SRG Webp Converter is a simple tool to convert images to Webp format.
 
 ## Installation
 
-Download the latest release from [GitHub](https://github.com/srgrcp/srg-webp-converter/releases), you can choose between portable or full version.
+Download the [latest release](https://github.com/srgrcp/srg-webp-converter/releases) from GitHub, you can choose between portable or full version.
 
 ## Usage
 
