@@ -1,7 +1,7 @@
 {
   "name": "srg-webp-converter",
   "description": "Convert images to webp format",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "main": "./dist/electron/main.js",
   "author": {
