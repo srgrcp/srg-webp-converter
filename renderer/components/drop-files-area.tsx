@@ -43,10 +43,11 @@ export default function DropFilesArea({ handleOpenFiles, setInputFiles }: DropFi
 
   return (
     <>
-      <p className="mb-6 font-bold text-xl text-slate-800 dark:text-slate-300">Select images to convert</p>
+      <h1 className="mb-6 font-bold text-xl text-slate-800 dark:text-slate-300">Select images to convert</h1>
 
       <div
         className="w-full max-w-md h-60 border-4 border-dashed border-slate-300 dark:border-slate-900 rounded-xl bg-slate-300/50 dark:bg-slate-900/50 flex flex-col justify-center items-center cursor-pointer"
+        data-testid="drop-files-area"
         onClick={handleOpenFiles}
         onDragOver={dragOverHandler}
         onDrop={dropHandler}
