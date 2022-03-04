@@ -1,13 +1,12 @@
-import { InputFile } from '@shared/input-file';
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
 import DropFilesArea from '../components/drop-files-area'
-import { useOpenFileDialog, useSetInputFiles } from '../store/callbacks';
+import { useGetInputFiles, useOpenFileDialog } from '../store/callbacks';
 
 export default function Home() {
   const router = useRouter();
   const openFileDialog = useOpenFileDialog();
-  const setInputFiles = useSetInputFiles();
+  const getInputFiles = useGetInputFiles();
 
   const openFileDialogAndRedirect = useCallback(
     async () => {
@@ -20,20 +19,20 @@ export default function Home() {
   )
 
   // Used when files are dropped
-  const setInputFilesAndRedirect = useCallback(
-    async (files: InputFile[]) => {
-      const filesCount = await setInputFiles(files);
+  const getInputFilesAndRedirect = useCallback(
+    async (filePaths: string[]) => {
+      const filesCount = await getInputFiles(filePaths);
       if (filesCount) {
         router.push("/list");
       }
     },
-    [router, setInputFiles],
+    [router, getInputFiles],
   )
 
   return (
     <div className='container mx-auto py-5 px-4 md:px-8 lg:px-12 2xl:px-16 h-screen flex items-center'>
       <div className='flex flex-grow flex-col items-center w-full'>
-        <DropFilesArea handleOpenFiles={openFileDialogAndRedirect} setInputFiles={setInputFilesAndRedirect} />
+        <DropFilesArea handleOpenFiles={openFileDialogAndRedirect} getInputFiles={getInputFilesAndRedirect} />
       </div>
     </div>
   )

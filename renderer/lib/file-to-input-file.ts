@@ -1,4 +1,4 @@
-import { InputFile } from "@shared/input-file";
+/* import { InputFile } from "@shared/input-file";
 import { formatBytes } from "./format-bytes";
 
 export function toInputFile(file: File): InputFile {
@@ -17,3 +17,5 @@ export function toInputFile(file: File): InputFile {
     quality: 80,
   };
 }
+ */
+export {};

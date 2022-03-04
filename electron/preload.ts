@@ -1,5 +1,5 @@
-import { InputFile } from "../shared/input-file";
-import { contextBridge, ipcRenderer } from "electron";
+import { InputFile } from '../shared/input-file';
+import { contextBridge, ipcRenderer } from 'electron';
 
 contextBridge.exposeInMainWorld('webpConverter', {
   openFiles: async (): Promise<InputFile[]> => {
@@ -12,5 +12,8 @@ contextBridge.exposeInMainWorld('webpConverter', {
   },
   selectOutputDirectory: async (): Promise<string> => {
     return await ipcRenderer.invoke('select-output-directory');
-  }
+  },
+  getInputFiles: async (filePaths: string[]): Promise<InputFile[]> => {
+    return await ipcRenderer.invoke('get-input-files', filePaths);
+  },
 });

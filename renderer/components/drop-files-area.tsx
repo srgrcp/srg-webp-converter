@@ -1,26 +1,24 @@
-import { InputFile } from "@shared/input-file";
 import { DragEvent } from "react";
-import { toInputFile } from "../lib/file-to-input-file";
 
 export type DropFilesAreaProps = {
   handleOpenFiles: () => Promise<void>;
-  setInputFiles: (files: InputFile[]) => Promise<void>;
+  getInputFiles: (filePaths: string[]) => Promise<void>;
 }
 
-export default function DropFilesArea({ handleOpenFiles, setInputFiles }: DropFilesAreaProps) {
+export default function DropFilesArea({ handleOpenFiles, getInputFiles }: DropFilesAreaProps) {
 
   function dropHandler(ev: DragEvent<HTMLDivElement>) {
     ev.preventDefault();
   
     if (ev.dataTransfer.items) {
-      const files: InputFile[] = [];
+      const filePaths: string[] = []
       for (var i = 0; i < ev.dataTransfer.items.length; i++) {
         if (ev.dataTransfer.items[i].kind === 'file') {
           var file = ev.dataTransfer.items[i].getAsFile();
-          files.push(toInputFile(file));
+          filePaths.push(file.path);
         }
       }
-      setInputFiles(files);
+      getInputFiles(filePaths);
     } 
   
     removeDragData(ev);

@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useRecoilValue } from 'recoil'
 import ConvertFilesSettingsModal from '../components/convert-files-settings-modal';
-import InputFileList from '../components/input-file-list';
-import { useConvertFiles, useSelectOutputDirectory, useApplyGlobalSettings } from '../store/callbacks';
+import InputFileList from '../components/file-list/input-file-list';
+import { useConvertFiles, useSelectOutputDirectory, useApplyGlobalSettings, useSetImageQuality, useSetImageDimensions, useSetImageOutputDirectory } from '../store/callbacks';
 import { selectAllInputFiles, selectIsConverting, selectOutputDirectory as sOutputDirectory } from '../store/selectors';
 import { useGlobalQuality } from '../store/state';
 
@@ -21,9 +21,14 @@ export default function List() {
     <div className='container mx-auto py-5 px-4 md:px-8 lg:px-12 2xl:px-16 h-screen flex items-center'>
       <div className='flex h-full flex-col items-center w-full relative'>
         <button
-          className='absolute top-0 right-0 px-5 py-1 rounded-md border border-slate-50/20 bg-transparent text-slate-50 transition ease-in-out hover:bg-slate-50/5'
+          className='absolute top-0 right-0 p-2 rounded-md bg-transparent text-slate-50 transition ease-in-out hover:bg-slate-50/5'
           onClick={() => setIsSettingsModalOpened(true)}
-        >Settings</button>
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </button>
 
         <ConvertFilesSettingsModal
           isOpened={isSettingsModalOpened}
@@ -37,7 +42,9 @@ export default function List() {
 
         <p className="mb-6 font-bold text-xl text-slate-800 dark:text-slate-300">Imported images</p>
 
-        <InputFileList inputFiles={inputFiles} />
+        <InputFileList
+          inputFiles={inputFiles}
+        />
 
         <div className='flex w-full py-7 justify-center items-center'>
           <Link href='/' passHref>

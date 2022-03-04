@@ -5,4 +5,11 @@ export type InputFile = {
   size: string;
   quality?: number;
   outputDirectory?: string;
-}
+  dimensions: Dimensions;
+  newDimensions: Dimensions;
+};
+
+export type Dimensions = {
+  width: number;
+  height: number;
+};
